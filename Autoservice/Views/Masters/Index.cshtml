@@ -1,0 +1,79 @@
+﻿@model Autoservice.Models.MasterData
+
+@{
+    ViewData["Title"] = "Мастера";
+}
+
+<h1>Мастера</h1>
+<p>@User.Identity.Name</p>
+<p>
+    <a asp-action="Create">Добавить</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>Фамилия</th>
+            <th>Имя Отчество</th>
+            <th>Стаж</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model.Masters)
+        {
+            string selectedRow = "";
+            if (item.ID == (int?)ViewData["MasterID"])
+            {
+                selectedRow = "table-success";
+            }
+            <tr class="@selectedRow">
+                <td>
+                    @Html.DisplayFor(modelItem => item.LastName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.FirstMidName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Stage)
+                </td>
+                <td>
+                    <a asp-action="Index" asp-route-id="@item.ID">Выбрать</a> |
+                    <a asp-action="Edit" asp-route-id="@item.ID">Изменить</a> |
+                    <a asp-action="Details" asp-route-id="@item.ID">Подробно</a> |
+                    <a asp-action="Delete" asp-route-id="@item.ID">Удалить</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+@if (Model.Requests != null)
+{
+    <h3>Заявки выбранного мастера</h3>
+    <table class="table">
+        <tr>
+            <th>Номер заявки</th>
+            <th>Клиент</th>
+            <th>Номер автомобиля</th>
+            <th>Стоимость</th>
+        </tr>
+
+        @foreach (var item in Model.Requests)
+        {
+            <tr>
+                <td>
+                    @item.RequestID
+                </td>
+                <td>
+                    @item.Clients.FullName
+                </td>
+                <td>
+                    @item.ClientCars.Number
+                </td>
+                <td>
+                    @item.Price
+                </td>
+            </tr>
+        }
+
+    </table>
+}

@@ -1,0 +1,13 @@
+{
+  "ExpandedNodes": [
+    "",
+    "\\Autoservice",
+    "\\Autoservice\\Controllers",
+    "\\Autoservice\\Models",
+    "\\Autoservice\\Views",
+    "\\Autoservice\\Views\\Account",
+    "\\Autoservice\\Views\\Clients"
+  ],
+  "SelectedNode": "\\Autoservice\\Views\\Account\\Login.cshtml",
+  "PreviewInSolutionExplorer": false
+}

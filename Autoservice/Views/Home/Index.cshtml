@@ -1,0 +1,23 @@
+﻿@{
+    ViewData["Title"] = "Домашняя страница";
+}
+
+<div class="jumbotron">
+    <h1>Автосервис "Новая жизнь"</h1>
+    <p>@User.Identity.Name</p>
+    <a asp-area="" asp-controller="Account" asp-action="Login">Выйти</a>
+</div>
+<div class="row">
+    <div class="col-md-4">
+        <h2>Добро пожаловать в наш автосервис</h2>
+        <p>
+            Наш автосервис на рынке уже 10 лет.
+        </p>
+    </div>
+    <div class="col-md-4">
+        <h2>Вы можете нам доверить Ваш автомобиль</h2>
+    </div>
+    <div class="col-md-4">
+        <h2>Мы подарим ему новую жизнь</h2>
+    </div>
+</div>

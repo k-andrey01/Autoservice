@@ -1,0 +1,59 @@
+﻿@model IEnumerable<Autoservice.Models.Request>
+
+@{
+    ViewData["Title"] = "Заявки";
+}
+
+<h1>Заявки</h1>
+<p>@User.Identity.Name</p>
+<p>
+    <a asp-action="Create">Добавить</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Date)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Price)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Clients)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Masters)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ClientCars)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Date)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Price)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Clients.FirstMidName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Masters.FirstMidName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ClientCars.Number)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.RequestID">Изменить</a> |
+                <a asp-action="Details" asp-route-id="@item.RequestID">Подробно</a> |
+                <a asp-action="Delete" asp-route-id="@item.RequestID">Удалить</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

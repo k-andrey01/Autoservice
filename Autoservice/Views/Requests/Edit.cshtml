@@ -1,0 +1,54 @@
+﻿@model Autoservice.Models.Request
+
+@{
+    ViewData["Title"] = "Изменить";
+}
+
+<h1>Изменить</h1>
+
+<h4>Заявка</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Edit">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="RequestID" />
+            <div class="form-group">
+                <label asp-for="ClientId" class="control-label"></label>
+                <select asp-for="ClientId" class="form-control" asp-items="ViewBag.ClientId"></select>
+                <span asp-validation-for="ClientId" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="MasterId" class="control-label"></label>
+                <select asp-for="MasterId" class="form-control" asp-items="ViewBag.MasterId"></select>
+                <span asp-validation-for="MasterId" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ClientCarId" class="control-label"></label>
+                <select asp-for="ClientCarId" class="form-control" asp-items="ViewBag.ClientCarId"></select>
+                <span asp-validation-for="ClientCarId" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Date" class="control-label"></label>
+                <input asp-for="Date" class="form-control" />
+                <span asp-validation-for="Date" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Price" class="control-label"></label>
+                <input asp-for="Price" class="form-control" />
+                <span asp-validation-for="Price" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Сохранить" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Назад</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
